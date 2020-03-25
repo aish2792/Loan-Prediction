@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% set active = "Thank You" %}
+
+{% block title %}
+Thank You!
+{% endblock %}
+
+{% block content %}
+
+<div class="container indent">
+    <div class="row thanks">
+        <div class="col-md-12 aligncenter">
+            <p class="limitFont">Thank you {{ firstName }}, for using our application. Sorry, but you are not eligible for the loan 😟.</p>
+        </div>
+        <div class="col-sm-12 aligncenter" >
+           <a href="/prediction"><button onclick="deleteAll()" type="submit" class="btn btn-primary">Try Again!</button></a>
+        </div>
+    </div>
+</div>
+
+<script>
+    function deleteAll()
+    {
+         $.get("api/delete_user" , function ()
+         {
+         console.log("Everything deleted")
+         });
+    }
+</script>
+{% endblock %}

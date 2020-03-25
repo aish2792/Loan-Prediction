@@ -1,0 +1,54 @@
+
+sqlite3 foodilious.db
+
+CREATE TABLE "food" (
+	"uid"	INTEGER,
+	"name"	TEXT NOT NULL,
+	"image"	TEXT,
+	PRIMARY KEY("uid")
+)
+.mode csv
+.import dev/data.csv goats
+
+CREATE TABLE "food_users" (
+	"name"	TEXT NOT NULL,
+	"username"	TEXT NOT NULL,
+	"encrypted_password"	TEXT NOT NULL,
+	"user_id"	INTEGER
+)
+
+CREATE TABLE "form_userinfo" (
+	"firstName"	TEXT,
+	"lastName"	TEXT,
+	"emailID"	TEXT NOT NULL,
+	"recipeName"	TEXT NOT NULL,
+	"num_ingr"	INTEGER,
+	"recipe_time"	TEXT,
+	"about_recipe"	TEXT,
+	"preparation"	TEXT NOT NULL,
+	"ingredientsList"	TEXT,
+	PRIMARY KEY("emailID")
+)
+
+CREATE TABLE "ingredients" (
+	"ingr_id"	INTEGER NOT NULL,
+	"name"	TEXT NOT NULL,
+	PRIMARY KEY("ingr_id")
+)
+
+CREATE TABLE "ingredients_list" (
+	"ingredients_id"	INTEGER NOT NULL,
+	"name"	TEXT NOT NULL,
+	PRIMARY KEY("ingredients_id")
+)
+
+CREATE TABLE "recipe_ingredients" (
+	"recipe_id"	TEXT NOT NULL,
+	"ingr_id"	INTEGER NOT NULL
+)
+
+CREATE TABLE "recipes" (
+	"recipe_id"	TEXT NOT NULL,
+	"recipe_name"	TEXT NOT NULL,
+	PRIMARY KEY("recipe_id")
+)

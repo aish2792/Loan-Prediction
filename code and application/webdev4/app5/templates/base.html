@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<!--Aishwarya Patil-->
+<!--14371634-->
+<!--CS 530 - Developing User Interfaces-->
+
+<head>
+    <title>Loan Prediction - {% block title %}{% endblock %}</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="/course/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/main.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat+Subrayada:700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa:400,500,600&display=swap" rel="stylesheet">
+    <link href="/course/img/pigIcon.png" type="image/png" rel="icon" sizes="16x16">
+    <script src="/course/lib/jquery/jquery-3.3.1.min.js"></script>
+    <script src="/course/lib/popper/popper.min.js"></script>
+    <script src="/course/lib/bootstrap/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+                        <a class="navbar-brand" href="/"><img src="/course/img/pigIcon.png" style="max-height: 40px;"></a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav mr-auto">
+                                <li class="nav-item">
+                                    <a  onclick="deleteAll()" class="nav-link {% if active == 'Home' %} active{% endif %}" href="/">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a  onclick="deleteAll()" class="nav-link {% if active == 'Prediction' %} active{% endif %}" href="/prediction">Prediction</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a  onclick="deleteAll()" class="nav-link {% if active == 'About' %} active{% endif %}" href="/about">About Us</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="indent">
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+
+</body>
+<script>
+
+    function deleteAll()
+    {
+         $.get("api/delete_user" , function ()
+         {
+         console.log("Everything deleted")
+         });
+    }
+
+</script>
+</html>
